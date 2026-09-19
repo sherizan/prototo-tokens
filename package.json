@@ -1,0 +1,31 @@
+{
+  "name": "@sherizan/prototo-tokens",
+  "version": "0.1.0",
+  "description": "Prototo design tokens. Platform-neutral, unitless, and shared across the site, the desktop app and the iOS viewer.",
+  "license": "MIT",
+  "author": "Sherizan Sheikh",
+  "type": "module",
+  "repository": { "type": "git", "url": "git+https://github.com/sherizan/prototo-tokens.git" },
+  "homepage": "https://github.com/sherizan/prototo-tokens#readme",
+  "keywords": ["design-tokens", "design-system", "prototo"],
+  "exports": {
+    ".": {
+      "react-native": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./src": "./src/index.ts",
+    "./tokens.json": "./tokens.json",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src", "tokens.json", "DESIGN.md", "README.md"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "tokens:json": "npm run build && node scripts/build-json.mjs",
+    "check": "npm run tokens:json && git diff --exit-code tokens.json",
+    "prepublishOnly": "npm run tokens:json"
+  },
+  "devDependencies": { "typescript": "^5.6.0" }
+}
