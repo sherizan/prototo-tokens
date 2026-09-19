@@ -1,6 +1,6 @@
 {
   "name": "@sherizan/prototo-tokens",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Prototo design tokens. Platform-neutral, unitless, and shared across the site, the desktop app and the iOS viewer.",
   "license": "MIT",
   "author": "Sherizan Sheikh",
@@ -24,13 +24,15 @@
     },
     "./src": "./src/index.ts",
     "./tokens.json": "./tokens.json",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./tokens.css": "./dist/tokens.css"
   },
   "files": [
     "dist",
     "src",
     "tokens.json",
     "DESIGN.md",
+    "SKILL.md",
     "README.md"
   ],
   "engines": {
@@ -41,8 +43,9 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "tokens:json": "npm run build && node scripts/build-json.mjs",
     "check": "npm run tokens:json && git diff --exit-code tokens.json",
-    "prepublishOnly": "npm run tokens:json",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run tokens:json && node scripts/build-css.mjs",
+    "prepare": "npm run build",
+    "tokens:css": "npm run build && node scripts/build-css.mjs"
   },
   "devDependencies": {
     "typescript": "^5.6.0"

@@ -40,7 +40,14 @@ are **web-only**; a native consumer decomposes them.
 |---|---|
 | `src/index.ts` | the source of truth |
 | `tokens.json` | generated, for anything that cannot read TypeScript |
+| `dist/tokens.css` | generated, CSS custom properties for consumers that want variables |
 | `DESIGN.md` | the system: principles, the rules, and the do's and don'ts |
+| `SKILL.md` | agent-skill entry point, so an agent can pick the system up whole |
+
+```css
+@import "@sherizan/prototo-tokens/tokens.css";
+/* --brand-pink, --chrome-page, --type-body, --space-md, --radius-btn, --shadow-glass */
+```
 
 `tokens.json` is generated and committed. `npm run check` regenerates it and fails on any diff, so it
 cannot drift from the source.
