@@ -5,9 +5,16 @@
   "license": "MIT",
   "author": "Sherizan Sheikh",
   "type": "module",
-  "repository": { "type": "git", "url": "git+https://github.com/sherizan/prototo-tokens.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherizan/prototo-tokens.git"
+  },
   "homepage": "https://github.com/sherizan/prototo-tokens#readme",
-  "keywords": ["design-tokens", "design-system", "prototo"],
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "prototo"
+  ],
   "exports": {
     ".": {
       "react-native": "./src/index.ts",
@@ -18,14 +25,25 @@
     "./tokens.json": "./tokens.json",
     "./package.json": "./package.json"
   },
-  "files": ["dist", "src", "tokens.json", "DESIGN.md", "README.md"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist",
+    "src",
+    "tokens.json",
+    "DESIGN.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "tokens:json": "npm run build && node scripts/build-json.mjs",
     "check": "npm run tokens:json && git diff --exit-code tokens.json",
-    "prepublishOnly": "npm run tokens:json"
+    "prepublishOnly": "npm run tokens:json",
+    "prepare": "npm run build"
   },
-  "devDependencies": { "typescript": "^5.6.0" }
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
 }
