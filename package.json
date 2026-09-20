@@ -1,6 +1,6 @@
 {
   "name": "@sherizan/prototo-tokens",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Prototo design tokens. Platform-neutral, unitless, and shared across the site, the desktop app and the iOS viewer.",
   "license": "MIT",
   "author": "Sherizan Sheikh",

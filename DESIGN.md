@@ -97,6 +97,7 @@ same brand; that belongs in its own repo.
 | `type.h1` | 36 | Section heading, wide viewports |
 | `type.h2` | 28 | Section heading, narrow |
 | `type.lede` | 18 | Sub-headline under a heading |
+| `type.headline` | 22 | Panel and card titles. Matches `headline` in the product's RN text scale |
 | `type.body` | 15 | Default body |
 | `type.bodyMd` | 14 | Dense body, secondary blocks |
 | `type.bodySm` | 13 | Small UI text |
@@ -132,7 +133,14 @@ documented, and usable from platforms that have no utility classes.
 
 ## 7. Shape and elevation
 
-`radius`: `btn` 6 · `card` 10.
+`radius`: `chip` 5 · `btn` 6 · `card` 10 · `modal` 12.
+
+Named for what they wrap rather than t-shirt sizes, so a value cannot be reached for because it
+looked about right. `chip` is inline code and small controls; `modal` is a desktop dialog.
+
+**Native overrides these.** iOS wants far rounder corners, cards at 22 and sheets at 44. Those stay
+in the platform's own theme, because one shared `modal` token would be wrong for one of the two
+surfaces.
 
 `shadow` carries two web recipes, `glass` and `glassDark`. **These are CSS strings and do not travel
 to React Native**, which wants `shadowOffset` / `shadowRadius` / `elevation`. A native consumer

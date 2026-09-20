@@ -70,6 +70,8 @@ export const type = {
   bodyMd: 14,
   body: 15,
   lede: 18,
+  /** Panel and card titles. Matches `headline` in the product's RN Text scale. */
+  headline: 22,
   h2: 28,
   h1: 36,
 } as const;
@@ -123,9 +125,23 @@ export const screen = {
   xl: 1280,
 } as const;
 
+/**
+ * Shape, for the light web and desktop surfaces.
+ *
+ * Named for what they wrap, not t-shirt sizes, so a value cannot be reached for
+ * because it "looked about right".
+ *
+ * NATIVE OVERRIDES THESE. iOS wants far rounder corners: cards at 22, modals at
+ * 44. Those live in the platform's own theme rather than here, because a shared
+ * `modal` token would be wrong for one of the two surfaces.
+ */
 export const radius = {
+  /** Inline code chips and small controls. */
+  chip: 5,
   btn: 6,
   card: 10,
+  /** Desktop dialogs. Native sheets are much rounder; see the note above. */
+  modal: 12,
 } as const;
 
 /**
