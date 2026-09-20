@@ -104,9 +104,10 @@ same brand; that belongs in its own repo.
 | `type.fine` | 12 | Fine print |
 | `type.eyebrow` | 11 | Uppercase section labels |
 
-**Named from real usage, not from an intended scale.** These eight cover roughly 254 of 290 sized
-elements on prototo.app. Hero sizes are deliberately absent: four of them exist and each is used
-once, which is not a scale.
+**Named from real usage, not from an intended scale.** Eight of these cover roughly 254 of 290 sized
+elements on prototo.app; `headline` was added later for Prototo Desktop's panel titles and is unused
+on the website so far. Hero sizes are deliberately absent: four of them exist and each is used once,
+which is not a scale.
 
 ### Families and weights
 
