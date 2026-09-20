@@ -123,14 +123,27 @@ The 4px grid governs **space**, not type. Type has its own rules, and they are t
 Every current heading size obeys this: 20, 28, 36. When you collapse an unnamed size, land it on a
 1px step if it is under 20 and on a multiple of 4 if it is 20 or over.
 
-**2. Tracking tightens as size grows.** Large type set at default tracking reads loose, small
-uppercase type reads cramped. In use: body and UI text take none, headings take `-0.02em` at h2 and
-`-0.03em` to `-0.04em` as they get larger, and the uppercase eyebrow takes `+0.06em`. The direction
-is the rule; the exact figure is per size.
+**2. Tracking tightens as size grows**, and it is tokenised. `tracking.eyebrow` `0.06` is the only
+positive value, for uppercase 11px labels. `tracking.headline` `-0.02` covers 20 to 22.
+`tracking.heading` `-0.03` covers h2 and up. Body and UI text take none.
 
-**3. Leading loosens as size shrinks.** Headings run tight at `1.15` to `1.2` because they are one or
-two lines and the shape matters. Body runs `1.6` to `1.65` because it is read in paragraphs. Nothing
-should sit between those two ranges without a reason.
+**3. Leading loosens as size shrinks**, also tokenised. `leading.heading` `1.15` for headings, which
+are one or two lines where the shape matters. `leading.body` `1.6` for anything read in paragraphs.
+Nothing sits between them without a reason.
+
+Both are **unitless**, like everything else here. CSS appends `em` to tracking and takes leading as a
+bare ratio; React Native multiplies both by the font size, because its `letterSpacing` and
+`lineHeight` are absolute points.
+
+> **These two collapsed real drift, so adopting them moves pixels.** The site currently runs four
+> tracking values and four leading values, and each pair overlaps at the same size: `-0.03em` and
+> `-0.02em` both appear at 28px, `1.6` and `1.65` both at 14 and 15px. That is two values doing one
+> job, not two roles. The tokens take the dominant value of each pair. A consuming repo migrating to
+> them will see small changes, and should say so rather than claiming nothing moved.
+>
+> Hero tracking (`-0.04em`, three uses at 52 to 64px) is deliberately **not** tokenised, because this
+> package has no hero sizes. It is blocked on the same open decision: four hero sizes exist, each used
+> once, which is not a scale.
 
 **4. 700 is the weight cap**, and nothing on any surface needs heavier.
 

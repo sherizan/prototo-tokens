@@ -26,6 +26,8 @@ const GROUPS = [
   { key: "brand", prefix: "brand", unit: "", note: "Brand. Pink is an event, never a page background." },
   { key: "chrome", prefix: "chrome", unit: "", note: "Chrome. The light-surface neutral ramp." },
   { key: "type", prefix: "type", unit: "px", note: "Type scale, named from real usage." },
+  { key: "tracking", prefix: "tracking", unit: "em", note: "Letter spacing. Tightens as size grows." },
+  { key: "leading", prefix: "leading", unit: "", note: "Line height, unitless ratio. Loosens as size shrinks." },
   { key: "space", prefix: "space", unit: "px", note: "Spacing ramp. A 4px grid." },
   { key: "radius", prefix: "radius", unit: "px", note: "Shape." },
   { key: "width", prefix: "width", unit: "px", note: "Layout widths." },
@@ -34,6 +36,15 @@ const GROUPS = [
   { key: "weight", prefix: "weight", unit: "", note: "Weights. 700 is the cap." },
   { key: "shadow", prefix: "shadow", unit: "", note: "Elevation. Web only: these do not travel to React Native." },
 ];
+
+// A group present in the source but missing from GROUPS above emits nothing and
+// reports success, which is how a token silently fails to reach CSS. Fail loudly.
+const covered = new Set([...GROUPS.map((g) => g.key), "font", "tokens"]);
+const missing = Object.keys(t).filter((k) => !covered.has(k));
+if (missing.length) {
+  console.error(`token group(s) not in GROUPS and not emitted: ${missing.join(", ")}`);
+  process.exit(1);
+}
 
 const lines = [
   "/* Prototo design tokens.",

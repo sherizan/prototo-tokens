@@ -135,6 +135,35 @@ export const screen = {
  * 44. Those live in the platform's own theme rather than here, because a shared
  * `modal` token would be wrong for one of the two surfaces.
  */
+/**
+ * Letter spacing, as a unitless em ratio so it travels. CSS appends `em`;
+ * React Native multiplies by the font size, since its `letterSpacing` is
+ * absolute points rather than relative.
+ *
+ * The rule is that tracking tightens as size grows. Large type at default
+ * tracking reads loose; small uppercase type reads cramped.
+ */
+export const tracking = {
+  /** Uppercase 11px labels. The only positive value. */
+  eyebrow: 0.06,
+  /** headline, 20 to 22. */
+  headline: -0.02,
+  /** h2 and up. */
+  heading: -0.03,
+} as const;
+
+/**
+ * Line height, as a unitless ratio, which both CSS and React Native accept
+ * (RN multiplies by font size).
+ *
+ * The rule is that leading loosens as size shrinks. Headings are one or two
+ * lines and the shape matters; body is read in paragraphs.
+ */
+export const leading = {
+  heading: 1.15,
+  body: 1.6,
+} as const;
+
 export const radius = {
   /** Inline code chips and small controls. */
   chip: 5,
@@ -185,5 +214,5 @@ export const shadow = {
   glassDark: '0 10px 30px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12)',
 } as const;
 
-export const tokens = { brand, chrome, type, space, font, weight, screen, radius, width, height, shadow } as const;
+export const tokens = { brand, chrome, type, tracking, leading, space, font, weight, screen, radius, width, height, shadow } as const;
 export type Tokens = typeof tokens;
