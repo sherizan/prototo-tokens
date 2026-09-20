@@ -109,12 +109,33 @@ elements on prototo.app; `headline` was added later for Prototo Desktop's panel 
 on the website so far. Hero sizes are deliberately absent: four of them exist and each is used once,
 which is not a scale.
 
-**The 4px grid is a spacing rule, not a type rule, and this scale says so.** Only `fine`, `headline`,
-`h2` and `h1` land on multiples of four. `eyebrow` 11, `bodySm` 13, `bodyMd` 14, `body` 15 and `lede`
-18 do not, and they are the five most-used sizes on the live site. Type reads by optical size rather
-than by grid, and 15px body on a 16px grid step would be a worse default for the sake of a tidier
-number. If that ever changes, it is a scale-wide decision and a visible one, not something to fix one
-token at a time.
+### The rules type follows
+
+The 4px grid governs **space**, not type. Type has its own rules, and they are these.
+
+**1. Two bands, with different step sizes.**
+
+| band | sizes | step rule | why |
+|---|---|---|---|
+| **Text**, 11 to 18 | eyebrow, fine, bodySm, bodyMd, body, lede | 1px steps are legitimate | at 12px, one pixel is a visible change in density. Rounding this band to fours would collapse five distinct roles into two |
+| **Heading**, 20 and up | headline, h2, h1 | **multiples of 4** | at 28px a single pixel is invisible, so the grid costs nothing and keeps hierarchy clean |
+
+Every current heading size obeys this: 20, 28, 36. When you collapse an unnamed size, land it on a
+1px step if it is under 20 and on a multiple of 4 if it is 20 or over.
+
+**2. Tracking tightens as size grows.** Large type set at default tracking reads loose, small
+uppercase type reads cramped. In use: body and UI text take none, headings take `-0.02em` at h2 and
+`-0.03em` to `-0.04em` as they get larger, and the uppercase eyebrow takes `+0.06em`. The direction
+is the rule; the exact figure is per size.
+
+**3. Leading loosens as size shrinks.** Headings run tight at `1.15` to `1.2` because they are one or
+two lines and the shape matters. Body runs `1.6` to `1.65` because it is read in paragraphs. Nothing
+should sit between those two ranges without a reason.
+
+**4. 700 is the weight cap**, and nothing on any surface needs heavier.
+
+**5. The scale is closed.** If you need a size that is not here, you have a hierarchy problem rather
+than a size problem. Add one only by deleting one, or by making the case in this file first.
 
 ### Families and weights
 
