@@ -196,6 +196,8 @@ The one carrying real weight is **`md`**, where mobile layout rules flip.
 | **Depth is light** | One specular edge, one ambient drop | Stack a border, a shadow and a gradient on the same card |
 | **Pink is an event** | Import `brand.pink` at the one call site that needs it | Make it a utility class, or put white text on `#E86A9C` (3.0:1) |
 | **The scale is closed** | `type.body`, `type.h2`, `type.eyebrow` | Reach for 19px because 18 looked small |
+| **Space is on fours** | `space.md`, `space.lg`, and multiples of 4 in a framework scale | Use 10px or 14px because it sat between two steps |
+| **Type has its own grid** | 1px steps under 20, multiples of 4 at 20 and above | Round `body` 15 up to 16 to make the type scale "tidy" |
 | **One system, three surfaces** | Add the value here as a unitless number | Write `'6px'`, or define a colour straight into a framework config |
 
 ---
