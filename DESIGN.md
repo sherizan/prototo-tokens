@@ -97,7 +97,7 @@ same brand; that belongs in its own repo.
 | `type.h1` | 36 | Section heading, wide viewports |
 | `type.h2` | 28 | Section heading, narrow |
 | `type.lede` | 18 | Sub-headline under a heading |
-| `type.headline` | 22 | Panel and card titles. Matches `headline` in the product's RN text scale |
+| `type.headline` | 20 | Panel and card titles |
 | `type.body` | 15 | Default body |
 | `type.bodyMd` | 14 | Dense body, secondary blocks |
 | `type.bodySm` | 13 | Small UI text |
@@ -108,6 +108,13 @@ same brand; that belongs in its own repo.
 elements on prototo.app; `headline` was added later for Prototo Desktop's panel titles and is unused
 on the website so far. Hero sizes are deliberately absent: four of them exist and each is used once,
 which is not a scale.
+
+**The 4px grid is a spacing rule, not a type rule, and this scale says so.** Only `fine`, `headline`,
+`h2` and `h1` land on multiples of four. `eyebrow` 11, `bodySm` 13, `bodyMd` 14, `body` 15 and `lede`
+18 do not, and they are the five most-used sizes on the live site. Type reads by optical size rather
+than by grid, and 15px body on a 16px grid step would be a worse default for the sake of a tidier
+number. If that ever changes, it is a scale-wide decision and a visible one, not something to fix one
+token at a time.
 
 ### Families and weights
 

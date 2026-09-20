@@ -70,8 +70,8 @@ export const type = {
   bodyMd: 14,
   body: 15,
   lede: 18,
-  /** Panel and card titles. Matches `headline` in the product's RN Text scale. */
-  headline: 22,
+  /** Panel and card titles. On the 4px grid, unlike most of this scale. */
+  headline: 20,
   h2: 28,
   h1: 36,
 } as const;
